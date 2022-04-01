@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "woSgfH+YqaaBkzp0FLeHBtPf4fiohACuOSzhr3e5YwE35kUvHyRvPLyv3lad8lAMqSYxLlTr436WESoaief5Cw==",
+  "dgSpecHash": "D+pn3P3lOcI+am/euf7RzaS9pya/cP3F5WuF0/1AgYhJSpjtsBEQ3I7Osl6ZiCE1qoQ9wg5J2RxOOLOYa8Kd8g==",
   "success": true,
   "projectFilePath": "/home/luis/github.com/luisfelipesdn12/aspnet-movies/aspnet-movies.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/luis/.nuget/packages/mysqlconnector/2.1.8/mysqlconnector.2.1.8.nupkg.sha512"
+  ],
   "logs": []
 }

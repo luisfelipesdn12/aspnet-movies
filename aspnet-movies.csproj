@@ -7,4 +7,8 @@
     <RootNamespace>aspnet_movies</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.1.8" />
+  </ItemGroup>
+
 </Project>
