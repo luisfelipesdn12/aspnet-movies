@@ -21,10 +21,16 @@ public class Movie
     public Director Director { get; set; }
     public Genre Genre { get; set; }
 
+    /// <summary>
+    /// It gets all the movies from the database and returns them as a list of Movie objects.
+    /// </summary>
+    /// <returns>
+    /// A list of Movie objects.
+    /// </returns>
     public static List<Movie> GetAll()
     {
         List<Movie> allMovies = new List<Movie>();
-        MySqlConnection conn = Database.Connection();
+        MySqlConnection conn = Database.Database.Connection();
         conn.Open();
         MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
         cmd.CommandText = @"SELECT * FROM movie;";
@@ -41,8 +47,8 @@ public class Movie
             newMovie.Id = movieId;
             newMovie.Title = movieTitle;
             newMovie.Year = movieYear;
-            newMovie.Director = new Director.GetById(movieDirectorId);
-            newMovie.Genre = new Genre.GetById(movieGenreId);
+            newMovie.Director = Director.GetById(movieDirectorId);
+            newMovie.Genre = Genre.GetById(movieGenreId);
 
             allMovies.Add(newMovie);
         }

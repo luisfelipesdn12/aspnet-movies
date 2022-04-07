@@ -13,10 +13,16 @@ public class Director
     public int Id { get; set; }
     public string Name { get; set; }
 
+    /// <summary>
+    /// It gets all the directors from the database and returns them as a list of Director objects.
+    /// </summary>
+    /// <returns>
+    /// A list of Director objects.
+    /// </returns>
     public static List<Director> GetAll()
     {
         List<Director> allDirectors = new List<Director>();
-        MySqlConnection conn = Database.Connection();
+        MySqlConnection conn = Database.Database.Connection();
         conn.Open();
         MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
         cmd.CommandText = @"SELECT * FROM director;";
@@ -25,7 +31,7 @@ public class Director
         {
             int directorId = rdr.GetInt32(0);
             string directorName = rdr.GetString(1);
-            Director newDirector = new Director(directorName, directorId);
+            Director newDirector = new Director{Id = directorId, Name = directorName};
             allDirectors.Add(newDirector);
         }
         conn.Close();
@@ -36,9 +42,16 @@ public class Director
         return allDirectors;
     }
 
+    /// <summary>
+    /// It gets a director by id.
+    /// </summary>
+    /// <param name="id">The id of the director to retrieve.</param>
+    /// <returns>
+    /// A Director object.
+    /// </returns>
     public static Director GetById(int id)
     {
-        MySqlConnection conn = Database.Connection();
+        MySqlConnection conn = Database.Database.Connection();
         conn.Open();
         MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
         cmd.CommandText = @"SELECT * FROM director WHERE id = @id;";
@@ -49,7 +62,7 @@ public class Director
         {
             int directorId = rdr.GetInt32(0);
             string directorName = rdr.GetString(1);
-            director = new Director(directorName, directorId);
+            director = new Director{Id = directorId, Name = directorName};
         }
         conn.Close();
         if (conn != null)

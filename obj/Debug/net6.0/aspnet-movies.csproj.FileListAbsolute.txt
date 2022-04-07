@@ -24,3 +24,5 @@
 /home/luis/github.com/luisfelipesdn12/aspnet-movies/obj/Debug/net6.0/aspnet-movies.pdb
 /home/luis/github.com/luisfelipesdn12/aspnet-movies/obj/Debug/net6.0/aspnet-movies.genruntimeconfig.cache
 /home/luis/github.com/luisfelipesdn12/aspnet-movies/obj/Debug/net6.0/ref/aspnet-movies.dll
+/home/luis/github.com/luisfelipesdn12/aspnet-movies/bin/Debug/net6.0/MySqlConnector.dll
+/home/luis/github.com/luisfelipesdn12/aspnet-movies/obj/Debug/net6.0/aspnet-movies.csproj.CopyComplete
