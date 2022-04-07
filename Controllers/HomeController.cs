@@ -15,6 +15,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        var directors = Director.GetAll();
+
+        // print each director's name
+        foreach (var director in directors)
+        {
+            Console.WriteLine(director.Name);
+        }
+
         return View();
     }
 

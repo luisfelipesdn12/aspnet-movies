@@ -16,3 +16,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}

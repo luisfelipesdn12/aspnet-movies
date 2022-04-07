@@ -14,7 +14,7 @@ public class Database
     /// </returns>
     public static MySqlConnection Connection()
     {
-        MySqlConnection conn = new MySqlConnection("server=YOURSERVER;user=YOURUSERID;password=YOURPASSWORD;database=YOURDATABASE");
+        MySqlConnection conn = new MySqlConnection("server=localhost;user=aspnet;password=aspnet@12345678;database=aspnet_movies");
         return conn;
     }
 }
