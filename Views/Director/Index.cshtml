@@ -1,0 +1,22 @@
+@model aspnet_movies.Models.Director;
+
+@{
+    ViewData["Title"] = "Cadastro de Diretor";
+}
+
+<h1>Cadastro de Diretor</h1>
+
+@using (Html.BeginForm("Index", "Director", FormMethod.Post))
+{
+    <div class="form-floating mb-3">
+        @Html.EditorFor(d => d.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.LabelFor(d => d.Name)
+        @Html.ValidationMessageFor(d => d.Name, null, new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+
+    <h5 class="mt-5">Diretores Cadastrados:</h5>
+    @foreach (var director in Director.GetAll()) {
+        <li>@director.Id - @director.Name</li>
+    }
+}
