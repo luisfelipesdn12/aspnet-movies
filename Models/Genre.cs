@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using aspnet_movies.Database;
+using System.ComponentModel.DataAnnotations;
 using MySqlConnector;
 
 namespace aspnet_movies.Models;
@@ -11,6 +12,10 @@ namespace aspnet_movies.Models;
 public class Genre
 {
     public int Id { get; set; }
+
+    [Required(ErrorMessage = "Insira o nome do gênero")]
+    [MaxLength(255)]
+    [Display(Name = "Nome do gênero")]
     public string Name { get; set; }
 
     /// <summary>
@@ -70,5 +75,21 @@ public class Genre
             conn.Dispose();
         }
         return genre;
+    }
+
+    public static int Add(Genre genre)
+    {
+        MySqlConnection conn = Database.Database.Connection();
+        conn.Open();
+        MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"INSERT INTO genre(name) values(@name);";
+        cmd.Parameters.AddWithValue("@name", genre.Name);
+        int result = cmd.ExecuteNonQuery();
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+        return result;
     }
 }

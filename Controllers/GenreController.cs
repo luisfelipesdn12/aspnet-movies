@@ -4,11 +4,11 @@ using aspnet_movies.Models;
 
 namespace aspnet_movies.Controllers;
 
-public class DirectorController : Controller
+public class GenreController : Controller
 {
-    private readonly ILogger<DirectorController> _logger;
+    private readonly ILogger<GenreController> _logger;
 
-    public DirectorController(ILogger<DirectorController> logger)
+    public GenreController(ILogger<GenreController> logger)
     {
         _logger = logger;
     }
@@ -19,10 +19,10 @@ public class DirectorController : Controller
     }
 
     [HttpPost]
-    public IActionResult Index(Director director)
+    public IActionResult Index(Genre genre)
     {
-        if (director.Name != null) {
-            Director.Add(director);
+        if (genre.Name != null) {
+            Genre.Add(genre);
         }
 
         return View();
