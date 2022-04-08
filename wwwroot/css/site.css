@@ -38,3 +38,9 @@ body {
 .card:hover {
   transform: scale(1.02);
 }
+
+.logo {
+  width: 10rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
