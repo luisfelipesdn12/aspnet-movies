@@ -20,3 +20,6 @@ create table movie (
     foreign key (director_id) references director(id),
     foreign key (genre_id) references genre(id)
 );
+
+create user aspnet identified by 'aspnet@12345678';
+grant insert, select, update, delete on aspnet_movies.* to aspnet;
