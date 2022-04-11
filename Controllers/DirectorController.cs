@@ -21,7 +21,7 @@ public class DirectorController : Controller
     [HttpPost]
     public IActionResult Index(Director director)
     {
-        if (director.Name != null) {
+        if (ModelState.IsValid) {
             Director.Add(director);
         }
 

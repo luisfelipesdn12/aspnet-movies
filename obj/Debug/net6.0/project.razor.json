@@ -16308,11 +16308,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/luis/github.com/luisfelipesdn12/aspnet-movies/Views/Director copy/Index.cshtml",
-      "TargetPath": "Views\\Director copy\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/luis/github.com/luisfelipesdn12/aspnet-movies/Views/Director/Index.cshtml",
       "TargetPath": "Views\\Director\\Index.cshtml",
       "FileKind": "mvc"
@@ -16333,8 +16328,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/luis/github.com/luisfelipesdn12/aspnet-movies/Views/Movie/Index.cshtml",
+      "TargetPath": "Views\\Movie\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/luis/github.com/luisfelipesdn12/aspnet-movies/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/luis/github.com/luisfelipesdn12/aspnet-movies/Views/Genre/Index.cshtml",
+      "TargetPath": "Views\\Genre\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

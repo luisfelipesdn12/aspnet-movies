@@ -21,7 +21,8 @@ public class GenreController : Controller
     [HttpPost]
     public IActionResult Index(Genre genre)
     {
-        if (genre.Name != null) {
+        if (ModelState.IsValid)
+        {
             Genre.Add(genre);
         }
 

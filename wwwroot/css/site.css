@@ -44,3 +44,12 @@ body {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+.navbar-collapse {
+  height: 2.5rem;
+}
+
+.navbar-brand > img {
+  height: 2.5rem;
+  width: auto;
+}

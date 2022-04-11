@@ -16,7 +16,20 @@
     <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
 
     <h5 class="mt-5">Diretores Cadastrados:</h5>
-    @foreach (var director in Director.GetAll()) {
-        <li>@director.Id - @director.Name</li>
+     @if (Director.GetAll().Count == 0) {
+        <p>Nenhum diretor cadastrado por enquanto...</p>
     }
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+        </tr>
+        @foreach (var director in Director.GetAll()) {
+            <tr>
+                <td>@director.Id</td>
+                <td>@director.Name</td>
+            </tr>
+        }
+    </table>
 }

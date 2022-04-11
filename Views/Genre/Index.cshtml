@@ -9,14 +9,31 @@
 @using (Html.BeginForm("Index", "Genre", FormMethod.Post))
 {
     <div class="form-floating mb-3">
-        @Html.EditorFor(d => d.Name, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.LabelFor(d => d.Name)
-        @Html.ValidationMessageFor(d => d.Name, null, new { @class = "text-danger" })
+        @Html.EditorFor(g => g.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.LabelFor(g => g.Name)
+        @Html.ValidationMessageFor(g => g.Name, null, new { @class = "text-danger" })
     </div>
     <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
 
     <h5 class="mt-5">Gêneroes Cadastrados:</h5>
-    @foreach (var genre in Genre.GetAll()) {
-        <li>@genre.Id - @genre.Name</li>
+     @if (Genre.GetAll().Count == 0) {
+        <p>Nenhum gênero cadastrado por enquanto...</p>
     }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var genre in Genre.GetAll()) {
+                <tr>
+                    <td>@genre.Id</td>
+                    <td>@genre.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }

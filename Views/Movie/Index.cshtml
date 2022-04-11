@@ -1,0 +1,75 @@
+@using aspnet_movies.Models;
+@model aspnet_movies.Models.Movie;
+
+@{
+    ViewData["Title"] = "Cadastro de Filme";
+}
+
+<h1>Cadastro de Filme</h1>
+
+@using (Html.BeginForm("Index", "Movie", FormMethod.Post))
+{
+    <div class="form-floating mb-3">
+        @Html.EditorFor(d => d.Title, new { htmlAttributes = new { required = "true", @class = "form-control" } })
+        @Html.LabelFor(d => d.Title)
+        @Html.ValidationMessageFor(d => d.Title, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-floating mb-3">
+        @Html.EditorFor(d => d.Year, new { htmlAttributes = new { required = "true", @class = "form-control", min = "1500", max = DateTime.Now.Year } })
+        @Html.LabelFor(d => d.Year)
+        @Html.ValidationMessageFor(d => d.Year, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-floating mb-3">
+        <select required class="form-select" name="genre" id="genre" aria-label="Floating label select example">
+            <option selected value="">Selecione um gênero</option>
+            @foreach (var genre in Genre.GetAll())
+            {
+                <option value="@genre.Id">@genre.Name</option>
+            }
+        </select>
+        <label for="genre">Gênero do filme</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <select required class="form-select" name="director" id="director" aria-label="Floating label select example">
+            <option selected value="">Selecione um diretor</option>
+            @foreach (var director in Director.GetAll())
+            {
+                <option value="@director.Id">@director.Name</option>
+            }
+        </select>
+        <label for="director">Gênero do filme</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+
+    <h5 class="mt-5">Filmes Cadastrados:</h5>
+    @if (Movie.GetAll().Count == 0) {
+        <p>Nenhum filme cadastrado por enquanto...</p>
+    }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Ano</th>
+                <th>Gênero</th>
+                <th>Diretor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Movie.GetAll())
+            {
+                <tr>
+                    <td>@movie.Id</td>
+                    <td>@movie.Title</td>
+                    <td>@movie.Year</td>
+                    <td>@movie.Genre.Name</td>
+                    <td>@movie.Director.Name</td>
+                </tr>
+            }
+    </table>
+}

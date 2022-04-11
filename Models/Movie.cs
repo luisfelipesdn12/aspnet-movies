@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using aspnet_movies.Database;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using MySqlConnector;
 
 namespace aspnet_movies.Models;
@@ -16,8 +18,16 @@ namespace aspnet_movies.Models;
 public class Movie
 {
     public int Id { get; set; }
+
+    [MaxLength(255)]
+    [Display(Name = "Título")]
+    [Required(ErrorMessage = "Insira o título do filme")]
     public string Title { get; set; }
+
+    [Display(Name = "Ano")]
+    [Required(ErrorMessage = "Insira o ano do filme")]
     public int Year { get; set; }
+
     public Director Director { get; set; }
     public Genre Genre { get; set; }
 
@@ -58,5 +68,28 @@ public class Movie
             conn.Dispose();
         }
         return allMovies;
+    }
+
+    public static int Add(Movie movie)
+    {
+        MySqlConnection conn = Database.Database.Connection();
+        conn.Open();
+        MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"INSERT INTO movie(
+            title, year, director_id, genre_id
+        ) VALUES (
+            @title, @year, @director_id, @genre_id
+        );";
+        cmd.Parameters.AddWithValue("@title", movie.Title);
+        cmd.Parameters.AddWithValue("@year", movie.Year);
+        cmd.Parameters.AddWithValue("@director_id", movie.Director.Id);
+        cmd.Parameters.AddWithValue("@genre_id", movie.Genre.Id);
+        int result = cmd.ExecuteNonQuery();
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+        return result;
     }
 }
